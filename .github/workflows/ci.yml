@@ -8,6 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Build-only placeholders: no backend is contacted during `next build`.
+      NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: pk_ci_build_placeholder
+      NEXT_PUBLIC_MEDUSA_BACKEND_URL: http://127.0.0.1:9000
+      NEXT_PUBLIC_DEFAULT_REGION: in
     steps:
       - uses: actions/checkout@v4
         with:
