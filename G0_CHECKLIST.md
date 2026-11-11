@@ -19,7 +19,7 @@ Scope: local-only, no deployment/publication, no spend. Status reviewed 2026-11-
 - [x] Storefront production build passes.
 - [x] Git repository on `main`, both local env files ignored, generated build info and local postgres log ignored; initial commit pushed to `https://github.com/BaariAbdul03/Project-Alpha.git`.
 - [x] Production dependency audit: `npm audit --omit=dev` had 1 critical (`next` 16.0.0–16.4.0) and 1 high (`zod` < 4.6.6). Next.js is now 16.4.6 and backend `zod` is 4.6.7; re-audit reports 0 critical and 0 high.
-- [x] CI workflow added at `.github/workflows/ci.yml`: Node 24, `npm ci`, `npm run build`, informational `npm audit --omit=dev`, full-history gitleaks (`fetch-depth: 0`).
+- [x] CI workflow `.github/workflows/ci.yml`: Node 24, `npm ci`, `npm run build`, informational `npm audit --omit=dev`, full-history gitleaks (`fetch-depth: 0`). GitHub Actions run on `main` succeeded (commit `68b84c7`).
 
 ## G0 local scope: complete
 All locally verifiable G0 work is done: database, seed, admin, Store API, catalog grid, build, dependency high/critical fixes, Git remote, and CI definition.
