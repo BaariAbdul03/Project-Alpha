@@ -15,7 +15,7 @@ Scope: local-only, no deployment/publication, no spend. Status reviewed 2026-11-
 - [x] Storefront backend/base URLs set to loopback (`127.0.0.1`) in the ignored local `.env.local`; default region `in`; backend `STORE_CORS` allows both loopback origins.
 - [x] Storefront key in `.env.local` replaced from the DB value and verified equal without printing it (earlier value was mismatched, 27 chars vs 67).
 - [x] Storefront catalog page `http://127.0.0.1:8000/in/store` returns HTTP 200 and server-renders the four seeded products (`Synthetic Cotton Tee`, `Synthetic Cotton Sweatshirt`, `Synthetic Cotton Sweatpants`, `Synthetic Cotton Shorts`).
-- [x] INR price set on all 20 variants across the four products with the synthetic value ₹999 (`apps/backend/src/scripts/set-inr-prices.ts`); the grid renders the price (`data-testid="price"`, `₹999.00`) and evidence is saved at `evidence/store-grid-prices.png`.
+- [x] INR price set on all 20 variants across the four products with the synthetic value ₹999 (`apps/backend/src/scripts/set-inr-prices.ts`); the grid renders the price (`data-testid="price"`, `₹999.00`) and evidence is saved at `evidence/store-grid-inr.png`.
 - [x] Store catalog page now renders `PaginatedProducts` from the Store API; the previous InstantSearch-only layer produced an empty listing and was removed from this page.
 - [x] Storefront production build passes.
 - [x] Git repository on `main`, both local env files ignored, generated build info and local postgres log ignored; initial commit pushed to `https://github.com/BaariAbdul03/Project-Alpha.git`.
