@@ -156,14 +156,6 @@ export default async function Footer() {
                     Contact
                   </LocalizedClientLink>
                 </li>
-                <li>
-                  <LocalizedClientLink
-                    className="hover:text-ui-fg-base"
-                    href="/search"
-                  >
-                    Search
-                  </LocalizedClientLink>
-                </li>
               </ul>
             </div>
             <div className="flex flex-col gap-y-2">

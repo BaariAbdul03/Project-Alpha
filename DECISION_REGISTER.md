@@ -17,7 +17,11 @@ Review date: 2026-11-11. Prototype scope only; local-only, ₹0 spend until the 
 | Stitch design approver | Client | Client says “Me”; named identity not supplied; client approval required against exported/authenticated Stitch source |
 | COD | Client | Allowed for desired scope; payment/fulfillment implementation deferred to later review |
 | Shipping coverage | Client | India-wide desired; provider/serviceability verification remains pending |
-| Logo and photos | Client | Written use approval stated; exact assets/brands still require rights/source records before launch |
+| Logo and photos | Client | Written use approval stated; exact assets/brands still require rights/source records before launch. Prototype uses placeholder/absent images only; no web images scraped. |
+| Search UI | Agent technical decision | Nav search icon and footer Search link removed for G0: catalog lists products from the Store API, and the InstantSearch adapter was not wired. Dedicated search engine deferred until the catalog proves the need. Revisit when the catalog is large enough to need search or refinements. |
+| Catalog pricing | Agent (synthetic data) | ₹999 INR set on all 20 variants for prototype display only; not client-approved pricing. Re-run `apps/backend/src/scripts/set-inr-prices.ts` after reseeding. |
+| Repo visibility | Client | Agent does not change GitHub visibility. Client sets the repository private in GitHub settings if required. |
+| CI / PR evidence | Agent + client | `.github/workflows/ci.yml` runs on push to `main`; push-triggered runs are green. No PR opened because this environment has no GitHub token or `gh` CLI. Client can open a PR or provide auth for PR-check evidence. |
 | Medusa baseline | Agent technical decision | Medusa 2.22.6 integrated starter; PostgreSQL 15 local. Official install guide reviewed 2026-11-11: https://docs.medusajs.com/learn/installation (Node 22.22+ LTS; Next.js starter requires Node 24 LTS or lower; PostgreSQL required). Starter README specifies PostgreSQL 15+. |
 | Hosting / vendor terms and costs | Agent researches; client approves accounts/budget | No selection or price claim. Medusa docs reviewed: https://docs.medusajs.com/learn/deployment and https://docs.medusajs.com/learn/installation (2026-11-11). Medusa local DB docs: https://docs.medusajs.com/resources/create-medusa-app (2026-11-11). PostgreSQL pricing depends on local/self-hosted vs vendor; no vendor selected. Redis is not needed for this local configuration; Medusa reports fake Redis fallback when REDIS_URL absent. |
 

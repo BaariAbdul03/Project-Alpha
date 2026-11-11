@@ -15,19 +15,21 @@ Scope: local-only, no deployment/publication, no spend. Status reviewed 2026-11-
 - [x] Storefront backend/base URLs set to loopback (`127.0.0.1`) in the ignored local `.env.local`; default region `in`; backend `STORE_CORS` allows both loopback origins.
 - [x] Storefront key in `.env.local` replaced from the DB value and verified equal without printing it (earlier value was mismatched, 27 chars vs 67).
 - [x] Storefront catalog page `http://127.0.0.1:8000/in/store` returns HTTP 200 and server-renders the four seeded products (`Synthetic Cotton Tee`, `Synthetic Cotton Sweatshirt`, `Synthetic Cotton Sweatpants`, `Synthetic Cotton Shorts`).
+- [x] INR price set on all 20 variants across the four products with the synthetic value ₹999 (`apps/backend/src/scripts/set-inr-prices.ts`); the grid renders the price (`data-testid="price"`, `₹999.00`) and evidence is saved at `evidence/store-grid-prices.png`.
 - [x] Store catalog page now renders `PaginatedProducts` from the Store API; the previous InstantSearch-only layer produced an empty listing and was removed from this page.
 - [x] Storefront production build passes.
 - [x] Git repository on `main`, both local env files ignored, generated build info and local postgres log ignored; initial commit pushed to `https://github.com/BaariAbdul03/Project-Alpha.git`.
 - [x] Production dependency audit: `npm audit --omit=dev` had 1 critical (`next` 16.0.0–16.4.0) and 1 high (`zod` < 4.6.6). Next.js is now 16.4.6 and backend `zod` is 4.6.7; re-audit reports 0 critical and 0 high.
-- [x] CI workflow `.github/workflows/ci.yml`: Node 24, `npm ci`, `npm run build`, informational `npm audit --omit=dev`, full-history gitleaks (`fetch-depth: 0`). GitHub Actions run on `main` succeeded (commit `68b84c7`).
+- [x] CI workflow `.github/workflows/ci.yml`: Node 24, `npm ci`, `npm run build`, informational `npm audit --omit=dev`, full-history gitleaks (`fetch-depth: 0`). Runs succeed on `main` (commits `68b84c7`, `998dc26`, and later pushes). No PR opened: this environment has no GitHub token or `gh` CLI, so branch/PR creation and PR-check evidence are unavailable; push-triggered CI evidence is recorded instead.
 
 ## G0 local scope: complete
 All locally verifiable G0 work is done: database, seed, admin, Store API, catalog grid, build, dependency high/critical fixes, Git remote, and CI definition.
 
 ## Accepted local limitations
 - 16 low/moderate production advisories remain in transitive dependencies with no non-major fix; recorded in `DECISION_REGISTER.md` with revisit trigger.
-- Catalog page uses the Store API directly. Storefront search/refinement UI (InstantSearch adapter against `/store/search`) is not wired into the catalog page.
-- Seed products have no images and carry zero INR prices, so the grid shows placeholder thumbnails and no meaningful price. Synthetic data only.
+- Search controls removed from the G0 UI: nav search icon and footer Search link deleted, because the catalog page renders from the Store API and the InstantSearch adapter was not wired. Dedicated search engine deferred until the catalog proves the need; decision recorded in `DECISION_REGISTER.md`.
+- Images are placeholders: seed products have no photos. Synthetic or rights-cleared assets only; real client photos wait for written approval. No web images scraped.
+- Prices are synthetic ₹999, not client-approved pricing. Zero-price seed values were replaced only for prototype display.
 
 ## Outside G0 local scope (client-owned, not blocking local prototype)
 - [ ] Hosting vendor/budget, staging vs production isolation policy, backups/access owner, data retention/residency.
